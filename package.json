@@ -9,17 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^6.0.19",
+    "@tabler/icons-react": "^2.32.0",
     "@types/node": "20.5.3",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
+    "axios": "^1.4.0",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
+    "googleapis": "^126.0.0",
     "next": "13.4.19",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.4",
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.9"
   }
 }
