@@ -1,15 +1,21 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios';
+import { PROMPTS } from '@/utils/server/consts';
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
 
-    const base_prompt = 'coloring page thick lines, no shadow, blank background color, only back and white,low detail, no shading and I want one full image,';
+    
     const prompt = req.body.prompt;
+    const type = req.body.type;
+    
+    const type_prompt = PROMPTS.filter(item => item.type == type)[0].prompt??'';
+    const base_prompt = `coloring page based on ${type_prompt} very thick outlines, kawaii cute, simple design, --ar 2:3 --v 4`;
+
     const API_KEY = process.env.MIDJOURNEY_API_KEY ?? '';
-    // const image_data =
+    
     const image_params = JSON.stringify({
         "prompt": `coloring book page:: ${prompt} ${base_prompt}`
     });

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { MantineProvider, ColorSchemeProvider, MantineThemeOverride } from '@mantine/core';
 import { initialState, HomeInitialState } from '@/state/index.state';
 import { useCreateReducer } from '@/hooks/useCreateReducer';
-
+import Header from '@/components/Layouts/Header';
 export default function App({ Component, pageProps }: AppProps) {
 
   const [isClient, setIsClient] = useState(false)
@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   };
   return (
-    <HomeContext.Provider
+    isClient&&<HomeContext.Provider
       value={{
         ...contextValue,
       }}
@@ -36,6 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={() => { }}>
         <MantineProvider theme={myTheme} withGlobalStyles withNormalizeCSS>
+          <Header />
           <Component {...pageProps} />
         </MantineProvider>
       </ColorSchemeProvider>
