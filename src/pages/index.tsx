@@ -18,12 +18,10 @@ const Home = () => {
     const [items, setItems] = useState<ImageType[]>([])
     const [search, setSearch] = useState<string>('');
     const [isLoad, setIsLoad] = useState<boolean>(false);
-    const [hover,setHover] = useState<number>(-1);
+    const [hover, setHover] = useState<number>(-1);
     const isMobile = useMediaQuery(`(max-width: 760px)`);
+
     
-    useEffect(() => {
-        getItems();
-    }, []);
 
     const getItems = async () => {
         setIsLoad(true);
@@ -40,6 +38,10 @@ const Home = () => {
         }
         setIsLoad(false);
     }
+
+    useEffect(() => {
+        getItems();
+    }, []);
 
 
     return (
@@ -100,7 +102,7 @@ const Home = () => {
                 {
                     isLoad ? <Box
                         mt={20}
-                        sx={(theme) =>({
+                        sx={(theme) => ({
                             textAlign: 'center'
                         })}
                     >
@@ -128,9 +130,10 @@ const Home = () => {
                                             sx={(theme) => ({
                                                 cursor: 'pointer'
                                             })}
-                                            onMouseOver={() => {setHover(key);
+                                            onMouseOver={() => {
+                                                setHover(key);
                                             }}
-                                            onMouseLeave={() => {setHover(-1)}}
+                                            onMouseLeave={() => { setHover(-1) }}
                                         >
                                             <Image src={item.image_url}
                                                 alt='img'
@@ -139,12 +142,12 @@ const Home = () => {
                                                 key == hover && !isMobile &&
                                                 <div className='overlay'>
                                                     {item.prompt}
-                                                </div>    
+                                                </div>
                                             }
                                             {
                                                 key == hover && !isMobile &&
                                                 <div className='overlay-download'>
-                                                    <a href={item}>
+                                                    <a href={item.image_url}>
                                                         <IconDownload />
                                                     </a>
                                                 </div>
@@ -155,9 +158,7 @@ const Home = () => {
                             </Masonry>
                         </ResponsiveMasonry>
                 }
-
             </Box>
-
         </Box>
     )
 }
