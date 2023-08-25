@@ -26,7 +26,7 @@ const Home = () => {
         const fetch = async() => {
             getItems();        
         }
-
+        fetch();
     },[]);
 
 
