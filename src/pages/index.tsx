@@ -22,6 +22,13 @@ const Home = () => {
     const isMobile = useMediaQuery(`(max-width: 760px)`);
 
     
+    useEffect(() => {
+        const fetch = async() => {
+            getItems();        
+        }
+
+    },[]);
+
 
     const getItems = async () => {
         setIsLoad(true);
@@ -39,10 +46,7 @@ const Home = () => {
         setIsLoad(false);
     }
 
-    useEffect(() => {
-        getItems();
-    }, []);
-
+    
 
     return (
         <Box
